@@ -194,7 +194,10 @@ class _RecipesWidgetState extends State<RecipesWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Image.network(
-                                      'https://picsum.photos/seed/846/600',
+                                      getJsonField(
+                                        recipesItem,
+                                        r'''$.recipe.image''',
+                                      ),
                                       width: 100.0,
                                       height: 100.0,
                                       fit: BoxFit.cover,
