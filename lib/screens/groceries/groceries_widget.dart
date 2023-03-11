@@ -45,7 +45,7 @@ class _GroceriesWidgetState extends State<GroceriesWidget> {
         title: Text(
           'Page Title',
           style: FlutterFlowTheme.of(context).title2.override(
-                fontFamily: 'Poppins',
+                fontFamily: 'Outfit',
                 color: Colors.white,
                 fontSize: 22.0,
               ),

@@ -61,13 +61,13 @@ abstract class FlutterFlowTheme {
 }
 
 class LightModeTheme extends FlutterFlowTheme {
-  late Color primaryColor = const Color(0xFF4B39EF);
-  late Color secondaryColor = const Color(0xFF39D2C0);
-  late Color tertiaryColor = const Color(0xFFEE8B60);
-  late Color alternate = const Color(0xFFFF5963);
-  late Color primaryBackground = const Color(0xFFF1F4F8);
+  late Color primaryColor = const Color(0xFF39D2C0);
+  late Color secondaryColor = const Color(0xFF249689);
+  late Color tertiaryColor = const Color(0xFFFFA077);
+  late Color alternate = const Color(0xFFF3F7FD);
+  late Color primaryBackground = const Color(0xFFEFF7F5);
   late Color secondaryBackground = const Color(0xFFFFFFFF);
-  late Color primaryText = const Color(0xFF101213);
+  late Color primaryText = const Color(0xFF111417);
   late Color secondaryText = const Color(0xFF57636C);
 
   late Color primaryBtnText = Color(0xFFFFFFFF);
@@ -96,51 +96,51 @@ class ThemeTypography extends Typography {
 
   final FlutterFlowTheme theme;
 
-  String get title1Family => 'Poppins';
+  String get title1Family => 'Outfit';
   TextStyle get title1 => GoogleFonts.getFont(
-        'Poppins',
+        'Outfit',
         color: theme.primaryText,
-        fontWeight: FontWeight.normal,
-        fontSize: 45.0,
+        fontWeight: FontWeight.w500,
+        fontSize: 34.0,
       );
-  String get title2Family => 'Poppins';
+  String get title2Family => 'Outfit';
   TextStyle get title2 => GoogleFonts.getFont(
-        'Poppins',
-        color: theme.secondaryText,
-        fontWeight: FontWeight.normal,
-        fontSize: 32.0,
+        'Outfit',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w300,
+        fontSize: 28.0,
       );
-  String get title3Family => 'Poppins';
+  String get title3Family => 'Outfit';
   TextStyle get title3 => GoogleFonts.getFont(
-        'Poppins',
+        'Outfit',
         color: theme.primaryText,
-        fontWeight: FontWeight.normal,
-        fontSize: 24.0,
+        fontWeight: FontWeight.w500,
+        fontSize: 20.0,
       );
-  String get subtitle1Family => 'Poppins';
+  String get subtitle1Family => 'Outfit';
   TextStyle get subtitle1 => GoogleFonts.getFont(
-        'Poppins',
+        'Outfit',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
-        fontSize: 22.0,
+        fontSize: 18.0,
       );
-  String get subtitle2Family => 'Poppins';
+  String get subtitle2Family => 'Inter';
   TextStyle get subtitle2 => GoogleFonts.getFont(
-        'Poppins',
-        color: theme.secondaryText,
-        fontWeight: FontWeight.w500,
-        fontSize: 16.0,
-      );
-  String get bodyText1Family => 'Poppins';
-  TextStyle get bodyText1 => GoogleFonts.getFont(
-        'Poppins',
+        'Inter',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 16.0,
       );
-  String get bodyText2Family => 'Poppins';
+  String get bodyText1Family => 'Inter';
+  TextStyle get bodyText1 => GoogleFonts.getFont(
+        'Inter',
+        color: theme.primaryText,
+        fontWeight: FontWeight.normal,
+        fontSize: 14.0,
+      );
+  String get bodyText2Family => 'Inter';
   TextStyle get bodyText2 => GoogleFonts.getFont(
-        'Poppins',
+        'Inter',
         color: theme.secondaryText,
         fontWeight: FontWeight.normal,
         fontSize: 14.0,
@@ -148,12 +148,12 @@ class ThemeTypography extends Typography {
 }
 
 class DarkModeTheme extends FlutterFlowTheme {
-  late Color primaryColor = const Color(0xFF4B39EF);
-  late Color secondaryColor = const Color(0xFF39D2C0);
-  late Color tertiaryColor = const Color(0xFFEE8B60);
-  late Color alternate = const Color(0xFFFF5963);
+  late Color primaryColor = const Color(0xFF39D2C0);
+  late Color secondaryColor = const Color(0xFF249689);
+  late Color tertiaryColor = const Color(0xFFFFA077);
+  late Color alternate = const Color(0xFF262D34);
   late Color primaryBackground = const Color(0xFF1A1F24);
-  late Color secondaryBackground = const Color(0xFF101213);
+  late Color secondaryBackground = const Color(0xFF111417);
   late Color primaryText = const Color(0xFFFFFFFF);
   late Color secondaryText = const Color(0xFF95A1AC);
 

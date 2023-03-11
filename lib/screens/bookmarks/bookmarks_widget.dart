@@ -44,7 +44,7 @@ class _BookmarksWidgetState extends State<BookmarksWidget> {
         title: Text(
           'Page Title',
           style: FlutterFlowTheme.of(context).title2.override(
-                fontFamily: 'Poppins',
+                fontFamily: 'Outfit',
                 color: Colors.white,
                 fontSize: 22.0,
               ),
