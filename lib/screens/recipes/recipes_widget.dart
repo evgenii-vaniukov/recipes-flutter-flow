@@ -9,7 +9,12 @@ import 'recipes_model.dart';
 export 'recipes_model.dart';
 
 class RecipesWidget extends StatefulWidget {
-  const RecipesWidget({Key? key}) : super(key: key);
+  const RecipesWidget({
+    Key? key,
+    this.searchTerm,
+  }) : super(key: key);
+
+  final String? searchTerm;
 
   @override
   _RecipesWidgetState createState() => _RecipesWidgetState();
@@ -140,8 +145,12 @@ class _RecipesWidgetState extends State<RecipesWidget> {
                         color: FlutterFlowTheme.of(context).primaryText,
                         size: 20.0,
                       ),
-                      onPressed: () {
-                        print('IconButton pressed ...');
+                      onPressed: () async {
+                        _model.apiResultfge = await RecipeSearchCall.call(
+                          ingridientName: _model.textController.text,
+                        );
+
+                        setState(() {});
                       },
                     ),
                   ],
@@ -150,84 +159,65 @@ class _RecipesWidgetState extends State<RecipesWidget> {
               Expanded(
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                  child: FutureBuilder<ApiCallResponse>(
-                    future: RecipeSearchCall.call(),
-                    builder: (context, snapshot) {
-                      // Customize what your widget looks like when it's loading.
-                      if (!snapshot.hasData) {
-                        return Center(
-                          child: SizedBox(
-                            width: 50.0,
-                            height: 50.0,
-                            child: CircularProgressIndicator(
-                              color: FlutterFlowTheme.of(context).primaryColor,
-                            ),
-                          ),
-                        );
-                      }
-                      final gridViewRecipeSearchResponse = snapshot.data!;
-                      return Builder(
-                        builder: (context) {
-                          final recipes = RecipeSearchCall.list(
-                                gridViewRecipeSearchResponse.jsonBody,
-                              )?.toList() ??
-                              [];
-                          return GridView.builder(
-                            padding: EdgeInsets.zero,
-                            gridDelegate:
-                                SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              crossAxisSpacing: 10.0,
-                              mainAxisSpacing: 10.0,
-                              childAspectRatio: 1.0,
-                            ),
-                            scrollDirection: Axis.vertical,
-                            itemCount: recipes.length,
-                            itemBuilder: (context, recipesIndex) {
-                              final recipesItem = recipes[recipesIndex];
-                              return Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    16.0, 10.0, 16.0, 5.0),
-                                child: Card(
-                                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 10.0, 0.0, 0.0),
-                                        child: Image.network(
-                                          getJsonField(
-                                            recipesItem,
-                                            r'''$.recipe.image''',
-                                          ),
-                                          width: 100.0,
-                                          height: 100.0,
-                                          fit: BoxFit.cover,
-                                        ),
+                  child: Builder(
+                    builder: (context) {
+                      final recipes = RecipeSearchCall.list(
+                            (_model.apiResultfge?.jsonBody ?? ''),
+                          )?.toList() ??
+                          [];
+                      return GridView.builder(
+                        padding: EdgeInsets.zero,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 10.0,
+                          mainAxisSpacing: 10.0,
+                          childAspectRatio: 1.0,
+                        ),
+                        scrollDirection: Axis.vertical,
+                        itemCount: recipes.length,
+                        itemBuilder: (context, recipesIndex) {
+                          final recipesItem = recipes[recipesIndex];
+                          return Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                16.0, 10.0, 16.0, 5.0),
+                            child: Card(
+                              clipBehavior: Clip.antiAliasWithSaveLayer,
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 10.0, 0.0, 0.0),
+                                    child: Image.network(
+                                      getJsonField(
+                                        recipesItem,
+                                        r'''$.recipe.image''',
                                       ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            10.0, 10.0, 10.0, 10.0),
-                                        child: Text(
-                                          getJsonField(
-                                            recipesItem,
-                                            r'''$.recipe.label''',
-                                          ).toString(),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText1,
-                                        ),
-                                      ),
-                                    ],
+                                      width: 100.0,
+                                      height: 100.0,
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
-                                ),
-                              );
-                            },
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10.0, 10.0, 10.0, 10.0),
+                                    child: Text(
+                                      getJsonField(
+                                        recipesItem,
+                                        r'''$.recipe.label''',
+                                      ).toString(),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyText1,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
                           );
                         },
                       );

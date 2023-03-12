@@ -12,6 +12,8 @@ class RecipesModel extends FlutterFlowModel {
   // State field(s) for TextField widget.
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
+  // Stores action output result for [Backend Call - API (recipeSearch)] action in IconButton widget.
+  ApiCallResponse? apiResultfge;
 
   /// Initialization and disposal methods.
 

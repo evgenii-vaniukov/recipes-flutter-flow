@@ -41,7 +41,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'recipes',
               builder: (context, params) => params.isEmpty
                   ? NavBarPage(initialPage: 'Recipes')
-                  : RecipesWidget(),
+                  : RecipesWidget(
+                      searchTerm:
+                          params.getParam('searchTerm', ParamType.String),
+                    ),
             ),
             FFRoute(
               name: 'Bookmarks',
