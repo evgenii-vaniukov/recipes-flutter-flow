@@ -184,8 +184,8 @@ class _RecipesWidgetState extends State<RecipesWidget> {
                             itemBuilder: (context, recipesIndex) {
                               final recipesItem = recipes[recipesIndex];
                               return Container(
-                                width: double.infinity,
-                                height: double.infinity,
+                                width: 200.0,
+                                height: 200.0,
                                 decoration: BoxDecoration(
                                   color: Color(0xFFF9DBCF),
                                   shape: BoxShape.rectangle,
