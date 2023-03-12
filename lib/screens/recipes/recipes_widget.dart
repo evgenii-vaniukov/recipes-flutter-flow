@@ -211,13 +211,17 @@ class _RecipesWidgetState extends State<RecipesWidget> {
                                           fit: BoxFit.cover,
                                         ),
                                       ),
-                                      Text(
-                                        getJsonField(
-                                          recipesItem,
-                                          r'''$.recipe.label''',
-                                        ).toString(),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1,
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10.0, 10.0, 10.0, 10.0),
+                                        child: Text(
+                                          getJsonField(
+                                            recipesItem,
+                                            r'''$.recipe.label''',
+                                          ).toString(),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1,
+                                        ),
                                       ),
                                     ],
                                   ),
