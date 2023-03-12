@@ -3,31 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:shared_preferences/shared_preferences.dart';
-
-const kThemeModeKey = '__theme_mode__';
-SharedPreferences? _prefs;
-
 abstract class FlutterFlowTheme {
-  static Future initialize() async =>
-      _prefs = await SharedPreferences.getInstance();
-  static ThemeMode get themeMode {
-    final darkMode = _prefs?.getBool(kThemeModeKey);
-    return darkMode == null
-        ? ThemeMode.system
-        : darkMode
-            ? ThemeMode.dark
-            : ThemeMode.light;
-  }
-
-  static void saveThemeMode(ThemeMode mode) => mode == ThemeMode.system
-      ? _prefs?.remove(kThemeModeKey)
-      : _prefs?.setBool(kThemeModeKey, mode == ThemeMode.dark);
-
   static FlutterFlowTheme of(BuildContext context) {
-    return Theme.of(context).brightness == Brightness.dark
-        ? DarkModeTheme()
-        : LightModeTheme();
+    return LightModeTheme();
   }
 
   late Color primaryColor;
@@ -39,8 +17,10 @@ abstract class FlutterFlowTheme {
   late Color primaryText;
   late Color secondaryText;
 
-  late Color primaryBtnText;
-  late Color lineColor;
+  late Color lineColor2;
+  late Color primaryBtnText1;
+  late Color lineColor1;
+  late Color primaryBtnText2;
 
   String get title1Family => typography.title1Family;
   TextStyle get title1 => typography.title1;
@@ -61,17 +41,19 @@ abstract class FlutterFlowTheme {
 }
 
 class LightModeTheme extends FlutterFlowTheme {
-  late Color primaryColor = const Color(0xFF39D2C0);
-  late Color secondaryColor = const Color(0xFF249689);
-  late Color tertiaryColor = const Color(0xFFFFA077);
-  late Color alternate = const Color(0xFFF3F7FD);
-  late Color primaryBackground = const Color(0xFFEFF7F5);
+  late Color primaryColor = const Color(0xFF27415B);
+  late Color secondaryColor = const Color(0xFF0A2B42);
+  late Color tertiaryColor = const Color(0xFFA96D51);
+  late Color alternate = const Color(0xFFEBDBCE);
+  late Color primaryBackground = const Color(0xFFFDF9F7);
   late Color secondaryBackground = const Color(0xFFFFFFFF);
-  late Color primaryText = const Color(0xFF111417);
-  late Color secondaryText = const Color(0xFF57636C);
+  late Color primaryText = const Color(0xFF0E151B);
+  late Color secondaryText = const Color(0xFF8B9BA8);
 
-  late Color primaryBtnText = Color(0xFFFFFFFF);
-  late Color lineColor = Color(0xFFE0E3E7);
+  late Color lineColor2 = Color(0xFFF9DBCF);
+  late Color primaryBtnText1 = Color(0x4D000000);
+  late Color lineColor1 = Color(0xFFE0E3E7);
+  late Color primaryBtnText2 = Color(0xFF0F1316);
 }
 
 abstract class Typography {
@@ -96,9 +78,9 @@ class ThemeTypography extends Typography {
 
   final FlutterFlowTheme theme;
 
-  String get title1Family => 'Outfit';
+  String get title1Family => 'Libre Caslon Display';
   TextStyle get title1 => GoogleFonts.getFont(
-        'Outfit',
+        'Libre Caslon Display',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 34.0,
@@ -108,11 +90,11 @@ class ThemeTypography extends Typography {
         'Outfit',
         color: theme.primaryText,
         fontWeight: FontWeight.w300,
-        fontSize: 28.0,
+        fontSize: 40.0,
       );
-  String get title3Family => 'Outfit';
+  String get title3Family => 'Libre Caslon Display';
   TextStyle get title3 => GoogleFonts.getFont(
-        'Outfit',
+        'Libre Caslon Display',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 20.0,
@@ -124,41 +106,27 @@ class ThemeTypography extends Typography {
         fontWeight: FontWeight.w500,
         fontSize: 18.0,
       );
-  String get subtitle2Family => 'Inter';
+  String get subtitle2Family => 'Outfit';
   TextStyle get subtitle2 => GoogleFonts.getFont(
-        'Inter',
+        'Outfit',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 16.0,
       );
-  String get bodyText1Family => 'Inter';
+  String get bodyText1Family => 'Outfit';
   TextStyle get bodyText1 => GoogleFonts.getFont(
-        'Inter',
+        'Outfit',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 14.0,
       );
-  String get bodyText2Family => 'Inter';
+  String get bodyText2Family => 'Outfit';
   TextStyle get bodyText2 => GoogleFonts.getFont(
-        'Inter',
+        'Outfit',
         color: theme.secondaryText,
         fontWeight: FontWeight.normal,
         fontSize: 14.0,
       );
-}
-
-class DarkModeTheme extends FlutterFlowTheme {
-  late Color primaryColor = const Color(0xFF39D2C0);
-  late Color secondaryColor = const Color(0xFF249689);
-  late Color tertiaryColor = const Color(0xFFFFA077);
-  late Color alternate = const Color(0xFF262D34);
-  late Color primaryBackground = const Color(0xFF1A1F24);
-  late Color secondaryBackground = const Color(0xFF111417);
-  late Color primaryText = const Color(0xFFFFFFFF);
-  late Color secondaryText = const Color(0xFF95A1AC);
-
-  late Color primaryBtnText = Color(0xFFFFFFFF);
-  late Color lineColor = Color(0xFF22282F);
 }
 
 extension TextStyleHelper on TextStyle {
