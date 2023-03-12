@@ -17,7 +17,7 @@ abstract class FlutterFlowTheme {
   late Color primaryText;
   late Color secondaryText;
 
-  late Color lineColor2;
+  late Color lineColor;
   late Color primaryBtnText1;
   late Color lineColor1;
   late Color primaryBtnText2;
@@ -50,7 +50,7 @@ class LightModeTheme extends FlutterFlowTheme {
   late Color primaryText = const Color(0xFF0E151B);
   late Color secondaryText = const Color(0xFF8B9BA8);
 
-  late Color lineColor2 = Color(0xFFF9DBCF);
+  late Color lineColor = Color(0xFFF9DBCF);
   late Color primaryBtnText1 = Color(0x4D000000);
   late Color lineColor1 = Color(0xFFE0E3E7);
   late Color primaryBtnText2 = Color(0xFF0F1316);

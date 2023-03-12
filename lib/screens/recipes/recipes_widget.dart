@@ -187,7 +187,7 @@ class _RecipesWidgetState extends State<RecipesWidget> {
                               final recipesItem = recipes[recipesIndex];
                               return Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    10.0, 10.0, 10.0, 10.0),
+                                    16.0, 10.0, 16.0, 5.0),
                                 child: Card(
                                   clipBehavior: Clip.antiAliasWithSaveLayer,
                                   color: FlutterFlowTheme.of(context)
